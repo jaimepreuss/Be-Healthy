@@ -1,7 +1,7 @@
 //this is your javascript
 
-var cat = () => {   
-    console.log('Jaime stop breaking computer');
+var dog = () => {   
+    console.log('Jaime please stop breaking computer');
 }
 
-cat();
+dog();
