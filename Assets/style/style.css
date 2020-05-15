@@ -2,5 +2,50 @@
     display: none;
 }
 .show {
-    display: block;
+    display: show;
+}
+button, 
+label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+h1{
+    font-weight: bolder;
+    text-align: center;
+}
+p {
+    font-family: 'Roboto', sans-serif;
+}
+label {
+    font-weight: bold;
+    color:#cf0a11;
+}
+.jumbotron {
+    color: white;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center top;
+    padding: 0px;
+}
+#header-box {
+    background-color: black;
+    padding: 75px 50px 50px 50px;
+}
+@media (max-width: 768px) {
+    #header-pic {
+        height: 325px;
+    }
+}
+#header-pic {
+    background-image: url("../img/toastbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+.btn {
+    background-color: #cf0a11;
+    border-color:#cf0a11;
+    color: white;
+    font-weight: bold;
+    margin: 10px;
 }
