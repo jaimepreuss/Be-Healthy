@@ -84,7 +84,7 @@
                         <label>
                             <input type="checkbox" class="radio" value="1" name="measure[2][]" id="m" /> Male</label>
                         <label>
-                            <input type="checkbox" class="radio" value="1" name="measure[2][]" id="female" />
+                            <input type="checkbox" class="radio" value="1" name="measure[2][]" id="f" />
                             Female</label>
                     </div>
                     <div class="form-group">
@@ -100,7 +100,7 @@
                         <label for="userActivity">
                             How often do you workout?
                         </label>
-                        <select class="form-control" id="userSex">
+                        <select class="form-control" id="userActivity">
                             <option selected id="not"> Not Often</option>
                             <option id="very">Very Often</option>
                         </select>
@@ -109,7 +109,7 @@
                         <label for="userWorkActivity">
                             How active is your work?
                         </label>
-                        <select class="form-control" id="userSex">
+                        <select class="form-control" id="userWorkActivity">
                             <option selected id="sedentary">Sedentary Job</option>
                             <option id="active">Active Job</option>
                         </select>
@@ -124,20 +124,21 @@
     <!--After the user answers the quiz they'll be given there BMI here-->
     <div id="bmi-container" class="container">
         <div class="row justify-content-center">
-            <h2 id="user-BMI">BMI: </h2>
+        <h2 id="user-BMI">BMI: </h2>
         </div>
         <div class="row justify-content-center">
-            <img alt="BMI Chart" src="Assets/img/BMIChart.jpg" class="w-75"></img>
+        <img alt="BMI Chart" src="Assets/img/BMIChart.jpg" class="w-75"></img>
         </div>
         <div class="row justify-content-center">
-            <p id="user-health-data">
-                little snippets about your health and where you are at currently.
-            </p>
-            <!--Maybe add more when Eddie gets back to us-->
+        <p id="user-health-data">
+            little snippets about your health and where you are at currently.
+        </p>
+        <p id="estimatedCalories">estimated calorie intake</p>
+        <!--Maybe add more when Eddie gets back to us-->
         </div>
         <!--??? Marissa-->
         <div class="row justify-content-center">
-
+        
         </div>
     </div>
     </div>
@@ -203,5 +204,4 @@
         </div>
     </div>
 </body>
-
 </html>
