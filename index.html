@@ -8,8 +8,6 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="Assets/style/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="Assets/js/quiz.js"></script>
-    <script src="Assets/js/script.js"></script>
 </head>
 <body>
     <!--General info about our Health app-->
@@ -23,18 +21,85 @@
             choices you'd like to adopt into your recipe list.
         </p>
         <button id="start" type="button" class="btn btn-info">Start Quiz</button>
+        <!--Add functionality to previous user to bring to saved user page-->
         <button id="previous" type="button" class="btn btn-info">Previous User</button>
     </div>
     <!--Questions to ask the user-->
-    <div id="question-container" class="container hide">
-        <div class="row justify-content-center" id="question">
-            Question
-        </div>
-        <div class="row justify-content-center" id="answers-container">
-            Answers
-        </div>
-    </div>
-    <button id="continue" type="button" class="btn btn-info">Continue</button>
+        <form id="userInput" class="hide">
+            <div class="form-group">
+                <label>
+                    What is your weight?(input then choose metric)
+                </label>
+                <input type="text" class="form-control" id="userWeight" placeholder="i.e. 120.5">
+                <!--use attr to get selected, as well as, change select to checkboxes-->
+                <div>
+                    <label>
+                        Measurement taken with...
+                    </label>
+                    <label>
+                      <input type="checkbox" class="radio" value="0" name="measure[1][]" id= "imperial"/>imperial</label>
+                    <label>
+                      <input type="checkbox" class="radio" value="1" name="measure[1][]" id= "metric"/>metric</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="row justify-content-center" for="userHeightFeet">
+                    What is your height? (input feet then inches)
+                </label>
+                
+                <input type="text" class="form-control" id="userHeight1" placeholder="i.e. 5">
+                <input type="text" class="form-control" id="userHeight2" placeholder="i.e. 4">
+            </div>
+
+            <div class="form-group">
+                <label for="userAge">
+                    What is your age?
+                </label>
+                <input type="text" class="form-control" id="userAge" placeholder="i.e. 4">
+            </div>
+            <fieldset>
+            <div class="form-group" id = "userSex">
+                    <label>
+                        Sex
+                    </label>
+                    <label>
+                      <input type="checkbox" class="radio" value="0" name="measure[2][]" id= "m"/>male</label>
+                    <label>
+                      <input type="checkbox" class="radio" value="1" name="measure[2][]" id= "f"/>female</label>
+            </div>
+            </fieldset>
+            <div class="form-group">
+                <label for="userWaist">What is your waist size?(optional)</label>
+                <input type="text" class="form-control" id="userWaist" placeholder="31.00">
+            </div>
+            <div class="form-group">
+                <label for="userHip">What is your hip size?(optional)</label>
+                <input type="text" class="form-control" id="userHip" placeholder="35.00">
+            </div>
+            <div class="form-group">
+                <label for="userActivity">
+                    How often do you workout?
+                </label>
+                <select class="form-control" id="userActivity">
+                    <option selected id="not" value="1">not often</option>
+                    <option id="very" value="2">very often</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="userWorkActivity">
+                    How active is your work? 
+                </label>
+                <select class="form-control" id="userWorkActivity">
+                    <option selected id="1">sedentary job</option>
+                    <option id="2">active job</option>
+                </select>
+            </div>
+            <!--Just have whole form on one container-->
+            <button id="calculate" type="button" class="btn btn-info">calculate bmi</button>
+        </form>
+
+    
     <!--After the user answers the quiz they'll be given there BMI here-->
     <div id="bmi-container" class="container">
         <div class="row justify-content-center">
@@ -47,13 +112,17 @@
         <p id="user-health-data">
             little snippets about your health and where you are at currently.
         </p>
+        <p id="estimatedCalories">estimated calorie intake</p>
+        <!--Maybe add more when Eddie gets back to us-->
         </div>
+        <!--??? Marissa-->
         <div class="row justify-content-center">
         
         </div>
     </div>
     </div>
     <!--User is given recipe choices to accomadate for a healtier life style-->
+    <!--Maybe want to streamline cards for more options for user-->
     <div id="user-recipe-container" class="container hide">
         <!--Recipe #1-->
         <div class="row justify-content-center">
@@ -106,9 +175,13 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <button></button>
+        <button>Allows user to filter recipe query</button>
         <button type="button" class="btn btn-info">Add more recipes</button>
-        </div>
+        <!--make button to bring user back to BMI form-->
+        <!--bring users to a saved user page-->
+        <button id="previous" type="button" class="btn btn-info">Previous User</button>
+    </div>
 </div>
+<script src="Assets/js/quiz.js"></script>
 </body>
 </html>
