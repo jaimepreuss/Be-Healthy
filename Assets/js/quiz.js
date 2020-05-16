@@ -42,6 +42,11 @@ $(document).ready(function () {
     $("#estimatedCalories").append(tdee1);
     
   });
+  
+  $("#recipes").on("click", function () {
+    bmiPage.attr("class", "hide");
+    $("#user-recipe-container").removeClass("hide");
+  })
 
   $("input:checkbox").on('click', function () {
 
