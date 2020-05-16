@@ -13,7 +13,7 @@ h1{
     font-weight: bolder;
     text-align: center;
 }
-p, 
+p,
 .card-body {
     font-family: 'Roboto', sans-serif;
 }
@@ -21,6 +21,7 @@ label,
 .card-title {
     font-weight: bold;
     color:#cf0a11;
+    text-align: center;
 }
 .jumbotron {
     color: white;
@@ -50,4 +51,7 @@ label,
     color: white;
     font-weight: bold;
     margin: 10px;
+}
+#quiz-cont {
+    background-color: black;
 }
