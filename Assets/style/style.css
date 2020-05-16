@@ -35,7 +35,6 @@ label,
 #header-box {
     background-color: black;
     padding: 75px 50px 50px 50px;
-    margin: ;
 }
 @media (max-width: 768px) {
     #header-pic {
