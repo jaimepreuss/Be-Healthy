@@ -2,62 +2,72 @@ $(document).ready(function () {
 
   var userPage = $("#userInput");
   var bmiPage = $("#bmi-container");
-  var weight = parseInt($("#userWeight").val());
-  var height1 = parseInt($("#userHeight1").val());
+  var weight = $("#userWeight");
+  var weightVar;
+  var height1 = $("#userHeight1");
+  var height1Var;
   var height2 = $("#userHeight2");
+  var height2Var;
   var newHeight;
   var userAge = $("#userAge");
-  var userSex = $("#f");
   var sexVar;
-  var userWorkout = $("#userActivity option:selected").val();
-  var userWorkActivity = $("#userWorkActivity option:selected").val();
+  var userWaist = $("#userWaist");
+  var userHip = $("#userHip");
+  var userWorkout = $("#userActivity option:selected");
+  var userWorkActivity = $("#userWorkActivity option:selected");
   var bmr;
   var tef;
   var eee;
   var neat;
   var tdee;
+  var tdee1;
   var recipe1 = $("#estimatedCalories");
-  var recipe2;
-  var recipe3;
 
   $("#start").on("click", function () {
+
     var startWrapper = $("#start-wrapper");
     startWrapper.removeClass("show");
     startWrapper.addClass("hide");
     userPage.removeClass("hide");
     userPage.attr("class", "show");
   });
+
   $("#calculate").on("click", function () {
-    userPage.removeClass("show");
+  
+    userPage.attr("class", "hide");
     bmiPage.removeClass("hide");
-    bmiPage.attr("class", "show");
-    tdee = tdeeCaculator();
-    console.log(parseInt(tdee));
-    console.log(weight.text());
-    console.log(height1.text());
-    console.log(userWorkout);
-    console.log(userWorkActivity);
-    console.log(userAge.text());
+    userAge = parseInt(userAge.val());
+    tdee1 = tdeeCaculator();
+    userHip = parseInt(userHip.val());
+    userWaist = parseInt(userWaist.val());
+    console.log(tdee1);
+    
   });
 
   $("input:checkbox").on('click', function () {
+
     var $box = $(this);
     if ($box.is(":checked")) {
+
       var group = "input:checkbox[name='" + $box.attr("name") + "']";
       $(group).prop("checked", false);
       $box.prop("checked", true);
+
     } else {
+
       $box.prop("checked", false);
     }
   });
 
   $("#m").change(function() {
+
     if ($(this).is(":checked")) {
       sexVar = 5;
     } 
   });
 
   $("#f").change(function() {
+
     if ($(this).is(":checked")) {
       sexVar = -161;
     } 
@@ -65,43 +75,61 @@ $(document).ready(function () {
 
   $("#metric").change(function() {
     height2.attr("class", "hide");
+    
   });
 
   $("#imperial").change(function() {
+
     if ($(this).is(":checked")) {
+      
       height2.removeClass("hide");
       height2.attr("class", "form-control");
     } 
   });
 
   function recipe1() {
+
     recipe1 = recipe1 - 200;
     return recipe1;
   };
 
   function lbsToKgs() {
-    weight = weight * .45359237;
-    return weight;
+    
+    weightVar = parseInt(weight.val());
+    weightVar = Math.floor(weightVar * .45359237);
+    
+    return weightVar;
   };
+
   function ftToCm() {
-    newHeight = height1 / .032808;
-    newHeight = newHeight + height2;
+    
+    height1Var = parseInt(height1.val());
+    newHeight = Math.floor(height1Var / .032808);
+
     return newHeight;
   };
+
   function bmrCalculator() {
+
+    var weight2;
+    var newHeight2;
+
     if ($("#imperial").is(":checked")) {
-      lbsToKgs();
-      ftToCm();
+      weight2 = lbsToKgs();
+      newHeight2 = ftToCm();
+
     }
     else {
-      newHeight = height1;
+      newHeight2 = height1;
     }
-    
-    bmr = (10 * weight) + (6.25 * newHeight) - (5 * userAge) + sexVar;
+
+    bmr = (10 * weight2) + (6.25 * newHeight2) - (5 * userAge) + sexVar;
+
     return bmr;
   };
   function tefCaculator() {
-    tef = bmrCalculator * .1;
+    tef = bmrCalculator() * .1;
+    
     return tef;
   };
   function eeeCalculator() {
@@ -111,13 +139,19 @@ $(document).ready(function () {
     } else {
       eee = 500;
     }
+    
+    return eee;
   };
   function neatCalculator() {
     if (userWorkActivity == 1) {
+
       neat = 250;
     } else {
+
       neat = 500;
     }
+    
+    return neat;
   };
   function tdeeCaculator() {
     bmr = bmrCalculator();
@@ -125,7 +159,7 @@ $(document).ready(function () {
     eee = eeeCalculator();
     neat = neatCalculator();
     tdee = bmr + tef + eee + neat;
+
     return tdee;
   };
-
 });
