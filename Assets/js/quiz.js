@@ -46,6 +46,7 @@ $(document).ready(function () {
   $("#recipes").on("click", function () {
     bmiPage.attr("class", "hide");
     $("#user-recipe-container").removeClass("hide");
+    $("#extra-btns").attr("class", "hide");
   })
 
   $("input:checkbox").on('click', function () {
