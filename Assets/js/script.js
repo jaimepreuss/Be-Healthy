@@ -2,15 +2,14 @@
     var weight = document.getElementById('userWeight');
     var ft = document.getElementById('userHeight1');
     var inch = document.getElementById('userHeight2');
-    var userSex = document.getElementById('userSex');
+    var userSex;
     var age = document.getElementById('userAge');
     var waist = document.getElementById('userWaist');
     var hip = document.getElementById('userHip');
-    var data = document.getElementById('user-health-data');
     var calculate = document.querySelector('#calculate');
     var units = "cm";
     var measurement = "kg";
-//ajax call for BMI Calculater
+    var li = document.createElement('li');
 $("input:checkbox").on('click', function() {
     //If Statement for units of measurement
     var $box = $(this);
@@ -22,7 +21,17 @@ $("input:checkbox").on('click', function() {
         measurement = "kg"
     }
 });
-
+$("#m").change(function() {
+    if ($(this).is(":checked")) {
+      userSex = "m";
+    } 
+  });
+  $("#f").change(function() {
+    if ($(this).is(":checked")) {
+      userSex = "f";
+    } 
+  });
+console.log(userSex);
 //calculate BMI index
 calculate.addEventListener('click', function(){
         var settings = {
@@ -32,25 +41,31 @@ calculate.addEventListener('click', function(){
         "method": "POST",
         "headers": {
             "x-rapidapi-host": "bmi.p.rapidapi.com",
-            "x-rapidapi-key": "ea5f608bc5msh64c9275fb23b0efp19a68bjsn4dfcc0f3ef75",
+            "x-rapidapi-key": "e163aa321cmshbdf57a157b8e441p13e323jsn99560e2ce917",
             "content-type": "application/json",
             "accept": "application/json"
         },
         "processData": false,
-        "data": "{\"weight\":{\"value\":\""+weight.value+"\",\"unit\":\""+measurement+"\"},\"height\":{\"value\":\""+ft.value+"-"+inch.value+"\",\"unit\":\""+units+"\"},\"sex\":\""+userSex.value+"\",\"age\":\""+age.value+"\",\"waist\":\""+waist.value+"\",\"hip\":\""+hip.value+"\"}"
+        "data": "{\"weight\":{\"value\":\""+weight.value+"\",\"unit\":\""+measurement+"\"},\"height\":{\"value\":\""+ft.value+"-"+inch.value+"\",\"unit\":\""+units+"\"},\"sex\":\""+userSex+"\",\"age\":\""+age.value+"\",\"waist\":\""+waist.value+"\",\"hip\":\""+hip.value+"\"}"
     }
-
+    var pTag = document.createElement('p')
+    var data = document.getElementById('user-health-data');
+    var health = document.getElementById('health');
     $.ajax(settings).done(function (response) {
         console.log(response);
+
+// this variable needs to be changed to calories         
         var maxCalories = parseInt(response.bmi.value)+200/3;
         var minCalories = parseInt(response.bmi.value)+100/3;
+
         var xCalories = Math.floor(maxCalories);
         var mCalories = Math.floor(minCalories);
-        data.innerHTML = response.bmi.value;
-        data.innerHTML = response.bmi.status;
-        data.innerHTML = response.bmi.risk;
-        data.innerHTML = response.whtr.status;
-        data.innerHTML = response.ideal_weight;
+        data.innerHTML =  "bmi: "+response.bmi.value;
+        data.appendChild(pTag).innerHTML = response.ideal_weight;
+        data.appendChild(pTags).innerHTML = response.bmi.status;        
+        data.appendChild(pTags).innerHTML = response.bmi.status;
+        data.appendChild(pTags).innerHTML = response.bmi.risk;
+        data.appendChild(pTags).innerHTML = response.whtr.status;
         console.log(getRecipe(mCalories, xCalories));
     });
 });
@@ -65,11 +80,14 @@ function getRecipe(mCalories, xCalories) {
         }
     });
 }
+var recipeOne = getElementById('recipeOne');
+var recipeTwo = getElementById('recipeTwo');
+var recipeThree = getElementById('recipeThree');
 function getsource(id){
     $.ajax({
-        url: "https://api.spoonacular.com/recipes/111209/information?apiKey=10d90065677e4148b48ed182e0f159a2",
+        url: "https://api.spoonacular.com/recipes/"+id+"/information?apiKey=10d90065677e4148b48ed182e0f159a2",
         success: function(res) {
-            console.log(res.title); //name of recipe
+            recipeOne.innerHTML = (res.title); //name of recipe
             console.log(res.readyInMinutes); //time to make
             console.log(res.sourceUrl); //link to directions
             console.log(res.image);  
