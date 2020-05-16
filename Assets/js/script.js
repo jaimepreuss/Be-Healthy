@@ -62,10 +62,10 @@ calculate.addEventListener('click', function(){
         var mCalories = Math.floor(minCalories);
         data.innerHTML =  "bmi: "+response.bmi.value;
         data.appendChild(pTag).innerHTML = response.ideal_weight;
-        data.appendChild(pTags).innerHTML = response.bmi.status;        
-        data.appendChild(pTags).innerHTML = response.bmi.status;
-        data.appendChild(pTags).innerHTML = response.bmi.risk;
-        data.appendChild(pTags).innerHTML = response.whtr.status;
+        data.appendChild(pTag).innerHTML = response.bmi.status;        
+        data.appendChild(pTag).innerHTML = response.bmi.status;
+        data.appendChild(pTag).innerHTML = response.bmi.risk;
+        data.appendChild(pTag).innerHTML = response.whtr.status;
         console.log(getRecipe(mCalories, xCalories));
     });
 });
@@ -75,15 +75,18 @@ function getRecipe(mCalories, xCalories) {
     $.ajax({
         url: "https://api.spoonacular.com/recipes/findByNutrients?minCalories="+mCalories+"&maxCalories="+xCalories+"&number=3&apiKey=10d90065677e4148b48ed182e0f159a2",
         success: function(res){
-            console.log(res[0].id);
-            console.log(getsource(res[0].id));
+            console.log(getsourceone(res[0].id));
+            console.log(getsourcetwo(res[1].id));
+            console.log(getsourcethree(res[3].id));
         }
     });
 }
-var recipeOne = getElementById('recipeOne');
-var recipeTwo = getElementById('recipeTwo');
-var recipeThree = getElementById('recipeThree');
-function getsource(id){
+var recipeOne = document.getElementById('recipeOne');
+var recipeTwo = document.getElementById('recipeTwo');
+var recipeThree = document.getElementById('recipeThree');
+var infoOne = document.getElementById('infoOne');
+var infoTwo = document.getElementById('infoThree');
+function getsourceone(id){
     $.ajax({
         url: "https://api.spoonacular.com/recipes/"+id+"/information?apiKey=10d90065677e4148b48ed182e0f159a2",
         success: function(res) {
@@ -91,7 +94,31 @@ function getsource(id){
             console.log(res.readyInMinutes); //time to make
             console.log(res.sourceUrl); //link to directions
             console.log(res.image);  
-            console.log(res.summary);
+            infoOne.innerHTML = res.summary;
+        }
+    });
+}
+function getsourcetwo(id){
+    $.ajax({
+        url: "https://api.spoonacular.com/recipes/"+id+"/information?apiKey=10d90065677e4148b48ed182e0f159a2",
+        success: function(res) {
+            recipeTwo.innerHTML = (res.title); //name of recipe
+            console.log(res.readyInMinutes); //time to make
+            console.log(res.sourceUrl); //link to directions
+            console.log(res.image);  
+            infoTwo.innerHTML = res.summary;
+        }
+    });
+}
+function getsourcthree(id){
+    $.ajax({
+        url: "https://api.spoonacular.com/recipes/"+id+"/information?apiKey=10d90065677e4148b48ed182e0f159a2",
+        success: function(res) {
+            recipeThree.innerHTML = (res.title);//name of recipe
+            console.log(res.readyInMinutes); //time to make
+            console.log(res.sourceUrl); //link to directions
+            console.log(res.image);  
+            infoThree.innerHTML = res.summary;
         }
     });
 }
