@@ -13,10 +13,12 @@ h1{
     font-weight: bolder;
     text-align: center;
 }
-p {
+p, 
+.card-body {
     font-family: 'Roboto', sans-serif;
 }
-label {
+label, 
+.card-title {
     font-weight: bold;
     color:#cf0a11;
 }
