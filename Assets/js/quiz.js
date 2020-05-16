@@ -40,6 +40,7 @@ $(document).ready(function () {
     tdee1 = tdeeCaculator();
     userHip = parseInt(userHip.val());
     userWaist = parseInt(userWaist.val());
+    console.log(tdee1);
     
   });
 
