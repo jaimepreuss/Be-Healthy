@@ -8,6 +8,7 @@ button,
 label {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    font-size: large;
 }
 h1{
     font-weight: bolder;
@@ -29,10 +30,12 @@ label,
     background-repeat: no-repeat;
     background-position: center top;
     padding: 0px;
+    margin: 0px;
 }
 #header-box {
     background-color: black;
     padding: 75px 50px 50px 50px;
+    margin: ;
 }
 @media (max-width: 768px) {
     #header-pic {
@@ -52,6 +55,15 @@ label,
     font-weight: bold;
     margin: 10px;
 }
-#quiz-cont {
-    background-color: black;
+#bmi-container {
+    font-weight: bold;
+    color:#cf0a11;
+    text-align: center;
+    padding-top: 50px;
+}
+img {
+    border: 1px solid black;
+  border-radius: 30px;
+  padding: 5px;
+  width: 150px;
 }
