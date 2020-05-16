@@ -7,7 +7,6 @@ $(document).ready(function () {
   var height1 = $("#userHeight1");
   var height1Var;
   var height2 = $("#userHeight2");
-  var height2Var;
   var newHeight;
   var userAge = $("#userAge");
   var sexVar;
@@ -26,7 +25,6 @@ $(document).ready(function () {
   $("#start").on("click", function () {
 
     var startWrapper = $("#start-wrapper");
-    startWrapper.removeClass("show");
     startWrapper.addClass("hide");
     userPage.removeClass("hide");
     userPage.attr("class", "show");
@@ -41,6 +39,7 @@ $(document).ready(function () {
     userHip = parseInt(userHip.val());
     userWaist = parseInt(userWaist.val());
     console.log(tdee1);
+    $("#estimatedCalories").append(tdee1);
     
   });
 
@@ -52,7 +51,7 @@ $(document).ready(function () {
       var group = "input:checkbox[name='" + $box.attr("name") + "']";
       $(group).prop("checked", false);
       $box.prop("checked", true);
-
+      
     } else {
 
       $box.prop("checked", false);

@@ -121,10 +121,9 @@
             </div>
         </div>
     </div>
-</div>
 
     <!--After the user answers the quiz they'll be given there BMI here-->
-    <div id="bmi-container" class="container">
+    <div id="bmi-container" class="container hide">
         <div class="row justify-content-center">
         <h2 id="user-BMI">BMI Chart </h2>
         </div>
@@ -132,18 +131,19 @@
         <img alt="BMI Chart" src="Assets/img/BMIChart.jpg" class="w-75" id="bmiPic"></img>
         </div>
         <div class="row justify-content-center">
+            <!--append relevant ajax call here BMI, Risk, etc -->
         <p id="user-health-data">
-            little snippets about your health and where you are at currently.
+            Little snippets about your general health:
         </p>
-        <p id="estimatedCalories">estimated calorie intake</p>
-        <!--Maybe add more when Eddie gets back to us-->
+        <br>
+        <p id="estimatedCalories">Estimated calorie intake per day: </p>
         </div>
-        <!--??? Marissa-->
         <div class="row justify-content-center">
         
         </div>
+        <button id="recipes" type="button" class="btn btn-warning">Show me the recipes</button>
     </div>
-    </div>
+    
     <!--User is given recipe choices to accomadate for a healtier life style-->
     <!--Maybe want to streamline cards for more options for user-->
     <div id="user-recipe-container" class="container hide">
